@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %} Dobrodošli na QUIZZ!!! {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+              QUIZZ
+            </a>
+          </div>
+        </nav>
+
+
+{#    {% include 'header.html' %}#}
+    <h1 class="display-4">Dobrodošli na Quizz</h1>
+    <hr/>
+    <p class="lead">
+        Danas je {{danas}}.
+    </p>
+    <a href="{% url 'index' %}"> Pocetna strana</a>
+    <br>
+    <p>Popunite formu da zapocnete kviz: </p>
+{#    <form>#}
+{#        <table>#}
+{#            {{ form }}#}
+{#        </table>#}
+{#    </form>#}
+
+
+    <h2>Rang lista takmičara</h2>
+
+    <ul>
+        {% for player in players %}
+        <li>
+            <p> {{player.username}}, {{player.date_of_entry}}</p>
+        </li>
+
+        {% endfor %}
+    </ul>
+
+</div>
+{#    {% include 'footer.html' %}#}
+
+
+{% endblock %}
