@@ -25,6 +25,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/quiz_project/templates" />
+        <option value="$MODULE_DIR$/quiz_project/static" />
       </list>
     </option>
   </component>
