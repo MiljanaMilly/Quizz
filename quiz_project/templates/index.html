@@ -23,11 +23,13 @@
     <a href="{% url 'index' %}"> Pocetna strana</a>
     <br>
     <p>Popunite formu da zapocnete kviz: </p>
-{#    <form>#}
-{#        <table>#}
-{#            {{ form }}#}
-{#        </table>#}
-{#    </form>#}
+    <form method="post">
+        <table>
+            {{ form }}
+        </table>
+        {% csrf_token %}
+        <button type="submit"> Započni kviz</button>
+    </form>
 
 
     <h2>Rang lista takmičara</h2>

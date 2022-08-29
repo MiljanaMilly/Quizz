@@ -20,6 +20,6 @@ from quizz.views import index, start, finish
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
-    path('start/', start),
+    path('start/', start, name="start"),
     path('results/', finish),
 ]
