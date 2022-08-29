@@ -10,41 +10,55 @@
               <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
               QUIZZ
             </a>
+            <a href="{% url 'index' %}">Pocetna strana</a>
           </div>
         </nav>
 
 
-{#    {% include 'header.html' %}#}
-    <h1 class="display-4">Dobrodošli na Quizz</h1>
+    <h1 class="display-4 text-center">Dobrodošli na Quizz</h1>
     <hr/>
-    <p class="lead">
-        Danas je {{danas}}.
-    </p>
-    <a href="{% url 'index' %}"> Pocetna strana</a>
-    <br>
-    <p>Popunite formu da zapocnete kviz: </p>
-    <form method="post">
-        <table>
-            {{ form }}
-        </table>
-        {% csrf_token %}
-        <button type="submit"> Započni kviz</button>
-    </form>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <p class="lead">
+                Danas je {{danas}}.
+            </p>
+            <br>
+            <p>Popunite formu da zapocnete kviz: </p>
+            <form method="post">
+                <table>
+                    {{ form }}
+                </table>
+                {% csrf_token %}
+                <button type="button" class="btn btn-primary mx-auto">Započni kviz</button>
+            </form>
+        </div>
+    </div>
 
 
-    <h2>Rang lista takmičara</h2>
-
-    <ul>
-        {% for player in players %}
-        <li>
-            <p> {{player.username}}, {{player.date_of_entry}}</p>
-        </li>
-
-        {% endfor %}
-    </ul>
-
+<hr>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h2 class="text-center">Rang lista takmičara</h2>
+            <br>
+            <table class="table table-success table-striped w-70">
+                        <tr>
+                          <th scope="col"><b> Rank </b></th>
+                          <th scope="col">Username</th>
+                          <th scope="col">Score</th>
+                          <th scope="col">Date of Entry</th>
+                        </tr>
+                        {% for player in players %}
+                            <tr>
+                              <td></td>
+                              <td>{{player.player.username}}</td>
+                              <td>{{player.score}}</td>
+                              <td>{{player.player.date_of_entry}}</td>
+                            </tr>
+                        {% endfor %}
+            </table>
+        </div>
+    </div>
 </div>
-{#    {% include 'footer.html' %}#}
 
 
 {% endblock %}

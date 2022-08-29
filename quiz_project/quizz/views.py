@@ -5,8 +5,7 @@ from datetime import datetime
 from django.core.exceptions import ValidationError
 import re
 
-from quizz.models import Player, QuizEntry
-
+from quizz.models import QuizEntry, Score
 
 QuizEntryForm = modelform_factory(QuizEntry, exclude=[])
 
@@ -28,9 +27,9 @@ def index(request):
     else:
         form = QuizEntryForm()
 
-    return render(request, "index.html", {"players": Player.objects.all(),
-                                              "danas": today,
-                                              "form": form})
+    return render(request, "index.html", {"players": Score.objects.order_by('-score')[:15],
+                                          "danas": today,
+                                          "form": form})
 
 
 def start(request):

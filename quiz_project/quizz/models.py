@@ -10,7 +10,7 @@ class Player(models.Model):
 
 
 class Score(models.Model):
-    date_of_quiz = models.DateField()
+    date_of_quiz = models.DateTimeField(auto_now_add=True)
     num_questions = models.IntegerField()
 
     class Category(models.TextChoices):
@@ -52,6 +52,7 @@ class Score(models.Model):
 
 
 class QuizEntry(models.Model):
+    date_of_quiz = models.DateTimeField(auto_now_add=True)
     # def __init__(self, username, num_of_questions, category, difficulty, quizType):
     #     self._username = username
     #     self._num_of_questions = num_of_questions
