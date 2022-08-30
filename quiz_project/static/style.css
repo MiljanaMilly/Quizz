@@ -20,3 +20,8 @@ table tr td:first-child::before
     font-weight: bold;
     font-size: large;
 }
+
+#formSubmission {
+    display: block;
+    margin: 0 auto;
+}

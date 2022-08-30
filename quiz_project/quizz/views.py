@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 import re
 
 from quizz.models import QuizEntry, Score
+from quizz.quiz_api_service import get_quiz_data
 
 QuizEntryForm = modelform_factory(QuizEntry, exclude=[])
 
@@ -16,13 +17,15 @@ def validate_username(value):
     else:
         raise ValidationError("This field accepts characters, numbers")
 
+
 def index(request):
     today = datetime.now().strftime("%d %b, %Y")
     if request.method == "POST":
         form = QuizEntryForm(request.POST)
         if form.is_valid():
-            # call api caller function
-            return redirect("start")
+            quiz_data = get_quiz_data(form.cleaned_data)
+            return render(request, "quiz.html", {"quiz": quiz_data})
+
 
     else:
         form = QuizEntryForm()

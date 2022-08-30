@@ -17,6 +17,7 @@
 
     <h1 class="display-4 text-center">Dobrodošli na Quizz</h1>
     <hr/>
+    <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-auto">
             <p class="lead">
@@ -25,13 +26,14 @@
             <br>
             <p>Popunite formu da zapocnete kviz: </p>
             <form method="post">
-                <table>
+                <table class="table table-sm">
                     {{ form }}
                 </table>
                 {% csrf_token %}
-                <button type="button" class="btn btn-primary mx-auto">Započni kviz</button>
+                <button type="submit" id="formSubmission" class="btn btn-primary">Započni kviz</button>
             </form>
         </div>
+    </div>
     </div>
 
 

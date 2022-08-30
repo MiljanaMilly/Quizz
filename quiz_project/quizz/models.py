@@ -67,41 +67,41 @@ class QuizEntry(models.Model):
         TEN = 10, '10'
         FIFTEEN = 15, '15'
 
-    num_of_questions = models.IntegerField(
+    amount = models.IntegerField(
         choices=QuestionNum.choices,
         default=QuestionNum.FIVE,
     )
 
     class Category(models.TextChoices):
-        NAUKA = 'NA', 'Nauka'
-        MUZIKA = 'MU', 'Muzika'
-        FILM = 'FM', 'Film'
-        OPSTE_OBRAZOVANJE = 'OO', 'Opste obrazovanje'
-        ISTORIJA = 'IS', 'Istorija'
+        NAUKA = '17', 'Nauka'
+        MUZIKA = '12', 'Muzika'
+        FILM = '11', 'Film'
+        OPSTE_OBRAZOVANJE = '9', 'Opste obrazovanje'
+        ISTORIJA = '23', 'Istorija'
 
     category = models.CharField(
-        max_length=2,
+        max_length=10,
         choices=Category.choices,
         default=Category.FILM,
     )
 
     class Level(models.TextChoices):
-        LAKO = 'L', 'Lako'
-        SREDNJE = 'S', 'Srednje'
-        TESKO = 'T', 'Teško'
+        LAKO = 'easy', 'Lako'
+        SREDNJE = 'medium', 'Srednje'
+        TESKO = 'hard', 'Teško'
 
     difficulty = models.CharField(
-        max_length=2,
+        max_length=10,
         choices=Level.choices,
         default=Level.SREDNJE,
     )
 
     class Type(models.TextChoices):
-        MULTIPLE_CHOICE = 'MC', 'Jedan od ponuđenih'
-        TF = 'TF', 'Tačno/Netačno'
+        MULTIPLE_CHOICE = 'multiple', 'Jedan od ponuđenih'
+        TF = 'boolean', 'Tačno/Netačno'
 
     type = models.CharField(
-        max_length=2,
+        max_length=10,
         choices=Type.choices,
         default=Type.MULTIPLE_CHOICE,
     )

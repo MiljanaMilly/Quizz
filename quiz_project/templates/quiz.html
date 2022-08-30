@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Vreme je za QUIZZ</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %} Vreme je za QUIZZ {% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+              QUIZZ
+            </a>
+            <a href="{% url 'index' %}">Pocetna strana</a>
+          </div>
+        </nav>
+
+        <h1 class="display-4 text-center">Vreme je za Quizz</h1>
+    <div>{{ quiz }}</div>
+    </div>
+
+{% endblock %}
