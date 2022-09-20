@@ -5,10 +5,9 @@ from datetime import datetime
 from django.core.exceptions import ValidationError
 import re
 
-from quizz.models import QuizEntry, Score
+from quizz.models import Score
+from quizz.forms import QuizEntryForm
 from quizz.quiz_api_service import get_quiz_data
-
-QuizEntryForm = modelform_factory(QuizEntry, exclude=[])
 
 
 def validate_username(value):

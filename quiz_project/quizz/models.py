@@ -1,12 +1,25 @@
 from django.db import models
+from django.utils.text import slugify
+
 
 
 class Player(models.Model):
     username = models.CharField(max_length=35)
     date_of_entry = models.DateField()
 
+
+    class Meta:
+        ordering = ['username']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+            # we call models save method and save it to database
+            # it is common
+        return super(). save(*args, **kwargs)
+
     def __str__(self):
-        return f"Igrač, {self.username}, se prvi put prijavio {self.date_of_entry}."
+        return self.username
 
 
 class Score(models.Model):
@@ -48,62 +61,5 @@ class Score(models.Model):
     score = models.IntegerField()
 
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
-
-
-
-class QuizEntry(models.Model):
-    date_of_quiz = models.DateTimeField(auto_now_add=True)
-    # def __init__(self, username, num_of_questions, category, difficulty, quizType):
-    #     self._username = username
-    #     self._num_of_questions = num_of_questions
-    #     self._category = category
-    #     self._difficulty = difficulty
-    #     self._type = quizType
-
-    username = models.CharField(max_length=25)
-
-    class QuestionNum(models.IntegerChoices):
-        FIVE = 5, '5'
-        TEN = 10, '10'
-        FIFTEEN = 15, '15'
-
-    amount = models.IntegerField(
-        choices=QuestionNum.choices,
-        default=QuestionNum.FIVE,
-    )
-
-    class Category(models.TextChoices):
-        NAUKA = '17', 'Nauka'
-        MUZIKA = '12', 'Muzika'
-        FILM = '11', 'Film'
-        OPSTE_OBRAZOVANJE = '9', 'Opste obrazovanje'
-        ISTORIJA = '23', 'Istorija'
-
-    category = models.CharField(
-        max_length=10,
-        choices=Category.choices,
-        default=Category.FILM,
-    )
-
-    class Level(models.TextChoices):
-        LAKO = 'easy', 'Lako'
-        SREDNJE = 'medium', 'Srednje'
-        TESKO = 'hard', 'Teško'
-
-    difficulty = models.CharField(
-        max_length=10,
-        choices=Level.choices,
-        default=Level.SREDNJE,
-    )
-
-    class Type(models.TextChoices):
-        MULTIPLE_CHOICE = 'multiple', 'Jedan od ponuđenih'
-        TF = 'boolean', 'Tačno/Netačno'
-
-    type = models.CharField(
-        max_length=10,
-        choices=Type.choices,
-        default=Type.MULTIPLE_CHOICE,
-    )
 
 

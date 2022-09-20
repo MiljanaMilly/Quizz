@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/QuizzProject.iml" filepath="$PROJECT_DIR$/.idea/QuizzProject.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/DjangoModels/django-models-project-start/.idea/django-models-project-start.iml" filepath="$USER_HOME$/Desktop/DjangoModels/django-models-project-start/.idea/django-models-project-start.iml" />
     </modules>
   </component>
 </project>

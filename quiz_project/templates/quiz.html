@@ -16,7 +16,34 @@
         </nav>
 
         <h1 class="display-4 text-center">Vreme je za Quizz</h1>
-    <div>{{ quiz }}</div>
+    <div class="col-md-8 offset-md-2">
+    <h3>Odaberite tacne odgovore</h3>
+    <hr>
+    <form action="/quiz/result" method="post">
+        {% csrf_token %}
+        <div>
+            {% for question in quiz %}
+                <h3>{{question.question}}</h3>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="answer1">
+                  <label class="form-check-label" for="exampleRadios2">
+                    <p> {{ question.correct_answer }}</p>
+                  </label>
+                </div>
+                {% for answer in question.incorrect_answers %}
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="answer1">
+                  <label class="form-check-label" for="exampleRadios1">
+                    <p>{{ answer }}</p>
+                  </label>
+                </div>
+                {% endfor %}
+
+            {% endfor %}
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
     </div>
 
 {% endblock %}

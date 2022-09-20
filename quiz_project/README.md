@@ -1,4 +1,4 @@
-# {{ project_name|title }}
+# Quizz Application
 
 # Getting Started
 
