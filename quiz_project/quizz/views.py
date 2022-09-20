@@ -23,9 +23,11 @@ def index(request):
         form = QuizEntryForm(request.POST)
         if form.is_valid():
             quiz_data = get_quiz_data(form.cleaned_data)
-            return render(request, "quiz.html", {"quiz": quiz_data})
 
-
+            # QuizResultSubmissionForm = modelform_factory(QuizData, exclude=[])
+            return render(request, "quiz.html",
+                          {"quiz_questions": quiz_data['questions'],
+                           "quiz_information": quiz_data['information']})
     else:
         form = QuizEntryForm()
 
@@ -38,5 +40,15 @@ def start(request):
     return render(request, "quiz.html")
 
 
-def finish(request):
-    return render(request, "results.html")
+def submit_results(request):
+    if request.method == "POST":
+        # form = QuizSubmissionForm(request.POST)
+        # if quizSubmission.is_valid():
+        #     result = get_results(form.cleaned_data)
+        # QuizzForm = modelform_factory()
+            quiz_data = []
+            return render(request, "results.html", {"quiz": quiz_data})
+    else:
+        form = QuizEntryForm()
+
+    return redirect('index')

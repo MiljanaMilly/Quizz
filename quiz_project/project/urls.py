@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from quizz.views import index, start, finish
+from quizz.views import index, submit_results
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
-    path('start/', start, name="start"),
-    path('results/', finish),
+    path('results', submit_results, name="results"),
 ]

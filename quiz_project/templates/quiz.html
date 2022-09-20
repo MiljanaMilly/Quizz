@@ -8,7 +8,7 @@
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
-              <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                <p class="d-inline-block align-text-top"> <b> Q</b> </p>
               QUIZZ
             </a>
             <a href="{% url 'index' %}">Pocetna strana</a>
@@ -16,34 +16,38 @@
         </nav>
 
         <h1 class="display-4 text-center">Vreme je za Quizz</h1>
-    <div class="col-md-8 offset-md-2">
-    <h3>Odaberite tacne odgovore</h3>
-    <hr>
-    <form action="/quiz/result" method="post">
-        {% csrf_token %}
-        <div>
-            {% for question in quiz %}
-                <h3>{{question.question}}</h3>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="answer1">
-                  <label class="form-check-label" for="exampleRadios2">
-                    <p> {{ question.correct_answer }}</p>
-                  </label>
-                </div>
-                {% for answer in question.incorrect_answers %}
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="answer1">
-                  <label class="form-check-label" for="exampleRadios1">
-                    <p>{{ answer }}</p>
-                  </label>
-                </div>
-                {% endfor %}
+    <br />
+        <div class="col-md-8 offset-md-2">
+            <div class="container-fluid">
+                <h2>Dobrodosli, {{ quiz_information.username }}</h2>
+                <p>Vas pocetak Quizz-a je zabelezen: {{ quiz_information.date_of_quiz }}</p>
+            </div>
+        <hr/>
+            <form action="results" method="post">
+                {% csrf_token %}
+                <div>
+                    {% for question in quiz_questions %}
+                        <h4>{{question.question}}</h4>
+                        {% for answer in question.answers %}
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="radioGroup-{{ question.question|slice:"8:15" }}" id="exampleRadios2" value="answer1">
+                          <label class="form-check-label" for="radioGroup{{ question|slice:"0:3" }}">
+                              <p>{{ answer }}</p>
+                          </label>
+                        </div>
+                        {% endfor %}
 
-            {% endfor %}
+                    {% endfor %}
+                </div>
+                <button type="submit" id="formSubmission" class="btn btn-primary md-5">Submit</button>
+                <hr/>
+                <div class="container-fluid">
+                    <hr/>
+                    <a href="{% url 'index' %}">Zapocni novi Quizz</a>
+                    <hr/>
+                </div>
+            </form>
         </div>
-        <button type="submit">Submit</button>
-    </form>
 </div>
-    </div>
 
 {% endblock %}

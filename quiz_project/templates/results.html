@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Quizz Results</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
-</body>
-</html>
+<div class="container-fluid">
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <p class="d-inline-block align-text-top"> <b>Q</b> </p>
+          QUIZZ
+        </a>
+        <a href="{% url 'index' %}">Pocetna strana</a>
+      </div>
+    </nav>
+
+    <div class="col-md-8 offset-md-2">
+        <div class="container-fluid">
+            <h2>Rezultati!!!</h2>
+            <p>Vas danasnji rezultat u Quizz-u je: </p>
+        </div>
+        <hr/>
+    </div>
+
+</div>
+{% endblock %}

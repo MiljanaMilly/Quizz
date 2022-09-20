@@ -62,4 +62,11 @@ class Score(models.Model):
 
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
 
-
+# class QuizSubmission(models.Model):
+#     date_of_quiz = models.DateTimeField()
+#     amount = models.IntegerField()
+#     category = models.CharField(max_length=25)
+#     difficulty = models.CharField(max_length=25)
+#     type = models.CharField(max_length=25)
+#     answer = models.TextField(blank=False, null=False)
+#     username = models.CharField(max_length=25)

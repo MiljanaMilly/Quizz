@@ -1,6 +1,14 @@
 from django import forms
 from datetime import datetime
 
+# class QuizDataForm(forms.Form):
+# questions
+# information
+# solution
+
+
+
+
 
 class QuizEntryForm(forms.Form):
     date_of_quiz = forms.DateTimeField(initial=datetime.now,
