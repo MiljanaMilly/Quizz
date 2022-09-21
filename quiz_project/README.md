@@ -2,23 +2,42 @@
 
 # Getting Started
 
-First clone the repository from Github and switch to the new directory:
+Aplikacija je radjena u IDE PyCharm, korisceni su: 
+- Python 3.10.6
+- Django 3.1.3
+- Bootstrap 5 CDN
 
-    $ git clone git@github.com/USERNAME/{{ project_name }}.git
-    $ cd {{ project_name }}
-    
-Activate the virtualenv for your project
-    
-    
-Create migrations:
+
+Potrebno je pokrenuti MySQL server i kreirati bazu sa sledecim parametrima:
+
+    'NAME': 'quizz',
+    'USER': 'root',
+    'PASSWORD': 'root',
+    'HOST': '127.0.0.1',
+    'PORT': '3301'
+
+Parametre je moguce izmeniti i u fajlu: quiz_project/project/settings.py
+
+
+Potrebno je klonirati projekat sa GitHub-a:
+URL: https://github.com/MiljanaMilly/Quizz.git
+
+    $ git clone git@github.com/MiljanaMilly/Quizz.git
+
+
+Kreiranje migracija baze:
 
     $ python manage.py makemigrations
 
-Then simply apply the migrations:
+Primeniti migracije baze:
 
     $ python manage.py migrate
     
 
-You can now run the development server:
+Pokrenite aplikaciju :
 
     $ python manage.py runserver
+
+Aplikacija je dostupna na :
+
+     http://127.0.0.1:8000/
