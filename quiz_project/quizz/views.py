@@ -1,18 +1,9 @@
 from django.shortcuts import render, redirect
 from datetime import datetime
-from django.core.exceptions import ValidationError
-import re
 
 from quizz.models import QuizResult
 from quizz.forms import QuizEntryForm
 from quizz.quiz_api_service import get_quiz_data, process_quiz_results
-
-
-def validate_username(value):
-    if re.match("^[a-zA-Z0-9_]+$", value):
-        return value
-    else:
-        raise ValidationError("This field accepts characters, numbers")
 
 
 def index(request):

@@ -1,5 +1,6 @@
 from django import forms
 from datetime import datetime
+from django.core.validators import MinLengthValidator, RegexValidator
 
 
 class QuizEntryForm(forms.Form):
@@ -9,7 +10,9 @@ class QuizEntryForm(forms.Form):
     username = forms.CharField(label='Korisn. ime',
                                min_length=2,
                                max_length=25,
-                               required=True)
+                               required=True,
+                               validators=[MinLengthValidator(2),
+                                           RegexValidator(regex='^[a-zA-Z0-9_]+$')])
 
     AMOUNT_CHOICES = (
         ('5', '5'),
