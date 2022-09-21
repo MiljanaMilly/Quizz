@@ -5,6 +5,7 @@
 Aplikacija je radjena u IDE PyCharm, korisceni su: 
 - Python 3.10.6
 - Django 3.1.3
+- MySQL server (kroz XAMPP v3.2.4)
 - Bootstrap 5 CDN
 
 
