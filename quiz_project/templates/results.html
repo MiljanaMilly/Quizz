@@ -14,10 +14,34 @@
 
     <div class="col-md-8 offset-md-2">
         <div class="container-fluid">
-            <h2>Rezultati!!!</h2>
-            <p>Vas danasnji rezultat u Quizz-u je: </p>
+            <h2> Cestitamo, <b> {{ quiz_score.username }} </b>!!!</h2>
+            <h3> Vas danasnji rezultat u Quizz-u je: <b>{{ quiz_score.score }} </b> </h3>
         </div>
         <hr/>
+    </div>
+
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h2 class="text-center">Rang lista takmičara</h2>
+            <br>
+            <table class="table table-success table-striped w-70">
+                        <tr>
+                          <th scope="col"><b> Rang </b></th>
+                          <th scope="col">Korisn. ime</th>
+                          <th scope="col">Rezultat</th>
+                          <th scope="col">Datum</th>
+                        </tr>
+                        {% for player in players %}
+                            <tr>
+                              <td></td>
+                              <td>{{player.username}}</td>
+                              <td>{{player.score}}</td>
+                              <td>{{player.date_of_quizz}}</td>
+                            </tr>
+                        {% endfor %}
+            </table>
+        </div>
     </div>
 
 </div>

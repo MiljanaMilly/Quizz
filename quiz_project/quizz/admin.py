@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from .models import Player, Score
+from .models import QuizResult
 
-admin.site.register(Player)
-admin.site.register(Score)
+admin.site.register(QuizResult)

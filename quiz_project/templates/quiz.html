@@ -24,14 +24,20 @@
             </div>
         <hr/>
             <form action="results" method="post">
+            <input type="hidden" name="username" value="{{ quiz_information.username }}">
+            <input type="hidden" name="date_of_quiz" value="{{ quiz_information.date_of_quiz }}">
+            {% for solution in quiz_solution %}
+                <input type="hidden" name="solution-{{ solution.question }}" value="{{ solution.correct_answer }}">
+            {% endfor %}
+
                 {% csrf_token %}
                 <div>
                     {% for question in quiz_questions %}
                         <h4>{{question.question}}</h4>
                         {% for answer in question.answers %}
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radioGroup-{{ question.question|slice:"8:15" }}" id="exampleRadios2" value="answer1">
-                          <label class="form-check-label" for="radioGroup{{ question|slice:"0:3" }}">
+                          <input class="form-check-input" type="radio" name="user_input-{{ question.question }}" id="exampleRadios2" value="{{ answer }}">
+                          <label class="form-check-label" for="user_input-{{ question.question }}">
                               <p>{{ answer }}</p>
                           </label>
                         </div>
